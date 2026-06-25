@@ -6,9 +6,9 @@ Terragrunt-based Infrastructure as Code project for managing cloud resources.
 
 - `modules/` - Terraform modules
 - `env/` - Environment-specific configurations
-  - `dev/` - Development environment
-  - `prod/` - Production environment
-  - `staging/` - Staging environment
+- `dev/` - Development environment
+- `prod/` - Production environment
+- `staging/` - Staging environment
 
 ## Getting Started
 
