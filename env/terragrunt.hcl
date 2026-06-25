@@ -1,9 +1,10 @@
 # Root Terragrunt configuration
+# This file will be included by all child modules
 
 # Configure remote state
 remote_state {
   backend = "s3"
-  
+
   config = {
     bucket         = "terraform-state-${get_aws_account_id()}"
     key            = "${path_relative_to_include()}/terraform.tfstate"
@@ -11,7 +12,7 @@ remote_state {
     encrypt        = true
     dynamodb_table = "terraform-locks"
   }
-  
+
   generate = {
     path      = "backend.tf"
     if_exists = "overwrite"
@@ -20,9 +21,9 @@ remote_state {
 
 # Generate provider configuration
 generate "provider" {
-  path      = "provider.tf" 
+  path      = "provider.tf"
   if_exists = "overwrite"
-  contents  = <<-EOF
+  contents  = <<-EOF_PROVIDER
     terraform {
       required_version = ">= 1.0"
       required_providers {
@@ -32,10 +33,10 @@ generate "provider" {
         }
       }
     }
-    
+
     provider "aws" {
       region = var.aws_region
-      
+
       default_tags {
         tags = {
           Environment = var.environment
@@ -43,5 +44,5 @@ generate "provider" {
         }
       }
     }
-  EOF
+  EOF_PROVIDER
 }

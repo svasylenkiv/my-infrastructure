@@ -31,3 +31,9 @@ Thumbs.db
 secrets/
 *.pem
 *.key
+bootstrap/terraform-state/terraform.tfstate*
+bootstrap/terraform-state/.terraform/
+bootstrap/terraform-state/.terraform.lock.hcl
+bootstrap/terraform-state/terraform.tfstate*
+bootstrap/terraform-state/.terraform/
+bootstrap/terraform-state/.terraform.lock.hcl
